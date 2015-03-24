@@ -44,14 +44,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAgregarColumna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAgregarRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDefineColumnas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDefineColumnas.Designer.cs">
+      <DependentUpon>FormDefineColumnas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FromEditarColumna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IRecuperaDatos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormDefineColumnas.resx">
+      <DependentUpon>FormDefineColumnas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -73,6 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ManejadorDeDatos.Core\ManejadorDeDatos.Core.csproj">
+      <Project>{d8f1d8f2-45c4-47aa-aa51-a1b963bbd1d4}</Project>
+      <Name>ManejadorDeDatos.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
