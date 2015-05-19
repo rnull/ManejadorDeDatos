@@ -15,15 +15,17 @@ namespace ManejadorDeDatos.GUI
         private TextBox[] datosColumna;
         private Button continuar;
         private Button cancelar;
+        private DataManager dm;
 
-        public FormAgregarRegistro()
+        public FormAgregarRegistro(DataManager dm)
         {
+            this.dm = dm;
             inicializaComponentes();
         }
 
         private void inicializaComponentes()
         {
-            string[] _columnas = DataManager.GetColumnas();
+            string[] _columnas = dm.GetColumnas();
 
             nombreColumnas = new Label[_columnas.Length];
             datosColumna = new TextBox[_columnas.Length];
@@ -50,7 +52,6 @@ namespace ManejadorDeDatos.GUI
             tableLayout.Dock = DockStyle.Fill;
 
             this.Controls.Add(tableLayout);
-            
         }
 
         void continuar_Click(object sender, EventArgs e)
@@ -67,7 +68,7 @@ namespace ManejadorDeDatos.GUI
                 _registro[i] = datosColumna[i].Text;
             }
 
-            DataManager.AgregarRegistro(_registro);
+            dm.AgregarRegistro(_registro);
             this.DialogResult = DialogResult.OK;
             this.Hide();
         }

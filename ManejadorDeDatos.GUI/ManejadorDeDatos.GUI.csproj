@@ -56,6 +56,9 @@
     <Compile Include="FormDefineColumnas.Designer.cs">
       <DependentUpon>FormDefineColumnas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormOrdenamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -7,48 +7,75 @@ namespace ManejadorDeDatos.Core
 {
     public class FileManager
     {
-        private static string _rutaArchivoDB;
+        private string _ArchivoDB;
 
-        public static void CrearArchivo(string nombreArchivo)
+        public FileManager(string rutaArchivo)
+        {
+            _ArchivoDB = rutaArchivo;
+        }
+
+        public void CrearArchivo()
         {
 
-            StreamWriter _sw = File.CreateText(nombreArchivo + ".txt");
+            StreamWriter _sw = File.CreateText(_ArchivoDB + ".txt");
 
-            _rutaArchivoDB = Path.GetFileName(nombreArchivo + ".txt");
+            _ArchivoDB = Path.GetFileName(_ArchivoDB + ".txt");
 
             _sw.Close();
 
         }
 
+        public void CargarArchivo()
+        {            
 
-        public static void reNombrar(string nombreArchivo, string nuevoNombre)
-        {
-            File.Move(nombreArchivo+".txt", nuevoNombre+".txt");
         }
 
-        public static string ObtenerDatos(string rutaArchivo)
+
+
+        public void reNombrar(string nuevoNombre)
         {
-            string resultado;
-
-            StreamReader file = new StreamReader(rutaArchivo);
-            DataManager.ObtenerColumnas(file.ReadLine());
-
-            resultado = file.ReadToEnd();
-
-
-            file.Close();
-            return resultado;
+            File.Move(_ArchivoDB, nuevoNombre + ".txt");
         }
 
-        public static void EscribeColumnas(string[] columnas)
+        //public string ObtenerDatos(string rutaArchivo)
+        //{
+        //    string resultado;
+
+        //    StreamReader file = new StreamReader(rutaArchivo);
+        //    DataManager.ObtenerColumnas(file.ReadLine());
+
+        //    resultado = file.ReadToEnd();
+
+
+        //    file.Close();
+        //    return resultado;
+        //}
+
+        //public static void EscribeColumnas(string[] columnas)
+        //{
+        //    StreamWriter _sw = new StreamWriter(_rutaArchivoDB, true);
+        //    for (int i = 0; i < columnas.Length-1; i++)
+        //    {
+        //        _sw.Write(columnas[i]); _sw.Write(' ');
+        //    }
+        //    _sw.Write(columnas[columnas.Length - 1]);
+        //    _sw.Close();
+        //}
+
+        public void GuardarCambios(string text)
         {
-            StreamWriter _sw = new StreamWriter(_rutaArchivoDB, true);
-            for (int i = 0; i < columnas.Length-1; i++)
-            {
-                _sw.Write(columnas[i]); _sw.Write(' ');
-            }
-            _sw.Write(columnas[columnas.Length - 1]);
-            _sw.Close();
+            File.WriteAllText(_ArchivoDB, text);
+        }
+
+        public string GetColumnas()
+        {
+            StreamReader file = new StreamReader(_ArchivoDB);
+            return file.ReadLine();
+        }
+
+        public string GetDBName()
+        {
+            return _ArchivoDB;
         }
     }
 }

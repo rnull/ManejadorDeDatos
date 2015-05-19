@@ -14,35 +14,35 @@ namespace ManejadorDeDatos.GUI
 {
     public partial class FormPrincipal : Form, IRecuperaDatos
     {
+        FileManager fileManager;
+        DataManager dataManager;
+        int MayorTamaño;
+
         public FormPrincipal()
         {
+            MayorTamaño = 0;
             InitializeComponent();
             inhabilitaBotonesMenu();
         }
 
         private void crearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManager.CrearArchivo("DB");
+            fileManager = new FileManager("DB");
+            fileManager.CrearArchivo();
             definirToolStripMenuItem_Click(sender, e);
         }
 
         private void definirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (DataManager.ExistenColumnas())
-            {
-                MessageBox.Show("No puedes redefinir las columnas. Las puedes editar, en Colunas > Editar.");
-                return;
-            }
             FormDefineColumnas windowDefineColumnas = new FormDefineColumnas();
             DialogResult dr = windowDefineColumnas.ShowDialog(this);
             if (dr == DialogResult.OK)
             {
-                DataManager.DefinirColumnas(windowDefineColumnas.GetText());
-                FileManager.EscribeColumnas(DataManager.GetColumnas());
-
-                textAreaPrincipal.Text = DataManager.ColumnasToString();
-
+                dataManager = new DataManager(windowDefineColumnas.GetText());
+                textAreaPrincipal.Text = dataManager.ColumnasToString();
                 habilitaBotonesMenu();
+
+                definirToolStripMenuItem.Enabled = false;
             }
         }
 
@@ -51,15 +51,17 @@ namespace ManejadorDeDatos.GUI
             DialogResult result = openFileDialog1.ShowDialog(this);
             if (result == DialogResult.OK)
             {
-                textAreaPrincipal.Text="";
-                textAreaPrincipal.AppendText(FileManager.ObtenerDatos(openFileDialog1.FileName));
-                
+                fileManager = new FileManager(openFileDialog1.FileName);
+                dataManager = new DataManager(fileManager.GetColumnas());
+                dataManager.ConstruirRegistros(fileManager.GetDBName());
+
+                RepintaTextArea();
             }
         }
 
         private void edicarColumnaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FromEditarColumna us1 = new FromEditarColumna(DataManager.GetColumnas());
+            FromEditarColumna us1 = new FromEditarColumna(dataManager.GetColumnas());
             us1.ShowDialog(this);
         }
 
@@ -95,7 +97,7 @@ namespace ManejadorDeDatos.GUI
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAgregarRegistro fAR = new FormAgregarRegistro();
+            FormAgregarRegistro fAR = new FormAgregarRegistro(dataManager);
             fAR.ShowDialog();
             DialogResult dr = fAR.DialogResult;
             if (dr == DialogResult.OK)
@@ -107,7 +109,31 @@ namespace ManejadorDeDatos.GUI
         private void RepintaTextArea()
         {
             textAreaPrincipal.Text = "";
-            textAreaPrincipal.AppendText(DataManager.ColumnasToString() + "\r\n" + DataManager.RegistrosToString());
+            textAreaPrincipal.AppendText(dataManager.ColumnasToString() + "\r\n" + dataManager.RegistrosToString());
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fileManager.GuardarCambios(textAreaPrincipal.Text);
+        }
+
+        private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormOrdenamiento fOrdenamiento = new FormOrdenamiento(dataManager.GetColumnas());
+            fOrdenamiento.ShowDialog();
+            DialogResult dr = fOrdenamiento.DialogResult;
+            if (dr == DialogResult.OK)
+            {
+                int aplicarEn = fOrdenamiento.GetColumnaSeleccionada();
+
+                dataManager.AplicarSortDefault(aplicarEn);
+                RepintaTextArea();
+            }
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
