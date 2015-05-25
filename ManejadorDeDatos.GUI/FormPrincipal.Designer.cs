@@ -46,6 +46,7 @@
             this.burbujaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textAreaPrincipal = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.selecciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,7 +154,7 @@
             // agregarToolStripMenuItem
             // 
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.agregarToolStripMenuItem.Text = "Agregar";
             this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
@@ -161,7 +162,8 @@
             // 
             this.aOrdenamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.defaultToolStripMenuItem,
-            this.burbujaToolStripMenuItem});
+            this.burbujaToolStripMenuItem,
+            this.selecciónToolStripMenuItem});
             this.aOrdenamientoToolStripMenuItem.Name = "aOrdenamientoToolStripMenuItem";
             this.aOrdenamientoToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
             this.aOrdenamientoToolStripMenuItem.Text = "A. Ordenamiento";
@@ -193,6 +195,13 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // selecciónToolStripMenuItem
+            // 
+            this.selecciónToolStripMenuItem.Name = "selecciónToolStripMenuItem";
+            this.selecciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.selecciónToolStripMenuItem.Text = "Selección";
+            this.selecciónToolStripMenuItem.Click += new System.EventHandler(this.selecciónToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -243,6 +252,7 @@
         private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem burbujaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selecciónToolStripMenuItem;
     }
 }
 

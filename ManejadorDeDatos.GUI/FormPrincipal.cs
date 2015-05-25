@@ -149,5 +149,19 @@ namespace ManejadorDeDatos.GUI
                 RepintaTextArea();
             }
         }
+
+        private void selecciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormOrdenamiento fOrdenamiento = new FormOrdenamiento(dataManager.GetColumnas());
+            fOrdenamiento.ShowDialog();
+            DialogResult dr = fOrdenamiento.DialogResult;
+            if (dr == DialogResult.OK)
+            {
+                int aplicarEn = fOrdenamiento.GetColumnaSeleccionada();
+
+                dataManager.aplicarSelec(aplicarEn);
+                RepintaTextArea();
+            }
+        }
     }
 }
