@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManejadorDeDatos.Core", "Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManejadorDeDatos.GUI", "ManejadorDeDatos.GUI\ManejadorDeDatos.GUI.csproj", "{D7D3195C-FC62-4391-AFB5-25AC96B87CF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algoritmos", "Algoritmos\Algoritmos.csproj", "{A90E1E26-C375-4FCB-9D41-BDD34F1FDBCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D7D3195C-FC62-4391-AFB5-25AC96B87CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7D3195C-FC62-4391-AFB5-25AC96B87CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7D3195C-FC62-4391-AFB5-25AC96B87CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A90E1E26-C375-4FCB-9D41-BDD34F1FDBCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90E1E26-C375-4FCB-9D41-BDD34F1FDBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A90E1E26-C375-4FCB-9D41-BDD34F1FDBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90E1E26-C375-4FCB-9D41-BDD34F1FDBCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
