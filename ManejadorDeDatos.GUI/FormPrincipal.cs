@@ -135,5 +135,19 @@ namespace ManejadorDeDatos.GUI
         {
             Application.Exit();
         }
+
+        private void burbujaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormOrdenamiento fOrdenamiento = new FormOrdenamiento(dataManager.GetColumnas());
+            fOrdenamiento.ShowDialog();
+            DialogResult dr = fOrdenamiento.DialogResult;
+            if (dr == DialogResult.OK)
+            {
+                int aplicarEn = fOrdenamiento.GetColumnaSeleccionada();
+
+                dataManager.aplicarBurbuja(aplicarEn);
+                RepintaTextArea();
+            }
+        }
     }
 }
