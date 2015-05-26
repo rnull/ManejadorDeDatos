@@ -9,7 +9,28 @@ namespace Algoritmos
     public class MetodosDeOrdenamiento
     {
 
-        private static void mBurbuja(int[] numeros)
+        //Metodo burbuja 
+        public static void mBurbuja(int[] caracteres)
+        {
+
+            int[] equivalenciASCII = new int[caracteres.Length];
+
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                equivalenciASCII[i] = (int)caracteres[i];
+            }
+
+            Aplicar(equivalenciASCII);
+
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                caracteres[i] = (char)equivalenciASCII[i];
+
+            }
+
+        }
+
+        private static void Aplicar(int[] numeros)
         {
 
             for (int i = 1; i < numeros.Length; i++)
@@ -25,9 +46,29 @@ namespace Algoritmos
                 }
             }
 
+        }    
+        // Fin metodo burbuja
+
+        //Metodo Selección
+        public static void mSelec(int[] caracteres)
+        {
+            int[] equivalenciASCII = new int[caracteres.Length];
+
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                equivalenciASCII[i] = (int)caracteres[i];
+            }
+
+            AplicarSelec(equivalenciASCII);
+
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                caracteres[i] = (char)equivalenciASCII[i];
+
+            }
         }
 
-        private static void mSelec(int[] numeros)
+        private static void AplicarSelec(int[] numeros)
         {
             for (int i = 0; i < numeros.Length - 1; i++)
             {
@@ -47,90 +88,7 @@ namespace Algoritmos
 
             }
         }
+        //Fin Metodo Selección
 
-        private static int mQuick(double[] numeros, int primero, int ultimo)
-        {
-            int ultimo1 = ultimo;
-            double pivote = primero;
-            double temporal;
-
-            int izq = primero + 1;
-            int der = ultimo1;
-
-            do
-            {
-                while ((izq <= der) && (izq <= pivote))
-                    izq++;
-                while ((izq <= der) && (der > pivote))
-                    der--;
-                if (izq < der)
-                {
-                    temporal = numeros[izq];
-                    numeros[izq] = numeros[der];
-                    numeros[der] = temporal;
-                }
-            }
-            while (izq <= der);
-
-            temporal = numeros[0];
-            numeros[0] = ultimo1;
-            numeros[numeros.Length - 1] = temporal;
-
-            return der;
-        }
-
-        public static void OnCharBurbuja(int[] caracteres)
-        {
-
-            int[] equivalenciASCII = new int[caracteres.Length];
-
-            for (int i = 0; i < caracteres.Length; i++)
-            {
-                equivalenciASCII[i] = (int)caracteres[i];
-            }
-
-            mBurbuja(equivalenciASCII);
-
-            for (int i = 0; i < caracteres.Length; i++)
-            {
-                caracteres[i] = (char)equivalenciASCII[i];
-
-            }
-
-        }
-
-        public static void OnCharQuick(int[] caracteres)
-        {
-            double[] equivalenciASCII = new double[caracteres.Length];
-            int x = caracteres[0];
-            for (int i = 0; i < caracteres.Length; i++)
-            {
-                equivalenciASCII[i] = (double)caracteres[i];
-            }
-
-            mQuick(equivalenciASCII, caracteres[0], caracteres[caracteres.Length - 1]);
-            for (int i = 0; i < caracteres.Length; i++)
-            {
-                caracteres[i] = (char)equivalenciASCII[i];
-            }
-        }
-
-        public static void OnCharSelec(int[] caracteres)
-        {
-            int[] equivalenciASCII = new int[caracteres.Length];
-
-            for (int i = 0; i < caracteres.Length; i++)
-            {
-                equivalenciASCII[i] = (int)caracteres[i];
-            }
-
-            mSelec(equivalenciASCII);
-
-            for (int i = 0; i < caracteres.Length; i++)
-            {
-                caracteres[i] = (char)equivalenciASCII[i];
-
-            }
-        }
     }
 }

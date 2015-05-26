@@ -203,7 +203,7 @@ namespace ManejadorDeDatos.Core
                 temporalNumChar[i] = Convert.ToInt32(temporaldechar[i]);
             }
 
-            Algoritmos.MetodoDeOrdenamiento.mBurbuja(temporalNumChar);
+            Algoritmos.MetodosDeOrdenamiento.mBurbuja(temporalNumChar);
 
             for (int i = 0; i < temporalNumChar.Length; i++)
             {
@@ -278,7 +278,7 @@ namespace ManejadorDeDatos.Core
                 temporalNumChar[i] = Convert.ToInt32(temporaldechar[i]);
             }
 
-            Algoritmos.MetodoDeOrdenamiento.mSelec(temporalNumChar);
+            Algoritmos.MetodosDeOrdenamiento.mSelec(temporalNumChar);
 
             for (int i = 0; i < temporalNumChar.Length; i++)
             {
