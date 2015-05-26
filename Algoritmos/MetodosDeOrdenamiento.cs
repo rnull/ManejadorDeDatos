@@ -50,7 +50,7 @@ namespace Algoritmos
         // Fin metodo burbuja
 
         //Metodo Selección
-        public static void mSelec(int[] caracteres)
+        public static void PreSelec(int[] caracteres)
         {
             int[] equivalenciASCII = new int[caracteres.Length];
 
@@ -90,13 +90,8 @@ namespace Algoritmos
         }
         //Fin Metodo Selección
 
-
         //Metodo de HeapSort
         //se fija un limite de nodos 
-       
-
-       
-
         public static  void HeapSort(ref int[] array)
         {    
             
@@ -163,5 +158,54 @@ namespace Algoritmos
 
         }
         //Fin HeapSort
+
+        //Inicio Metodo QuickSort
+        public static void PreQuickSort(int[] caracteres) 
+        {
+            double[] equivalenciASCII = new double[caracteres.Length];
+            int x = caracteres[0];
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                equivalenciASCII[i] = (double)caracteres[i];
+            }
+
+            AplicarQuick(equivalenciASCII, caracteres[0], caracteres[caracteres.Length - 1]);
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                caracteres[i] = (char)equivalenciASCII[i];
+            }
+        }
+
+        private int AplicarQuick(double[] numeros, int primero, int ultimo)
+        {
+            int ultimo1 = ultimo;
+            double pivote = primero;
+            double temporal;
+
+            int izq = primero + 1;
+            int der = ultimo1;
+
+            do
+            {
+                while ((izq <= der) && (izq <= pivote))
+                    izq++;
+                while ((izq <= der) && (der > pivote))
+                    der--;
+                if (izq < der)
+                {
+                    temporal = numeros[izq];
+                    numeros[izq] = numeros[der];
+                    numeros[der] = temporal;
+                }
+            }
+            while (izq <= der);
+
+            temporal = numeros[0];
+            numeros[0] = ultimo1;
+            numeros[numeros.Length - 1] = temporal;
+
+            return der;
+        }
+        //Fin QuickSort
     }
 }

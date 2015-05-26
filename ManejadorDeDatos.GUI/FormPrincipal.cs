@@ -178,5 +178,20 @@ namespace ManejadorDeDatos.GUI
             }
 
         }
+
+        private void quickSortToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormOrdenamiento fOrdenamiento = new FormOrdenamiento(dataManager.GetColumnas());
+            fOrdenamiento.ShowDialog();
+            DialogResult dr = fOrdenamiento.DialogResult;
+            if (dr == DialogResult.OK)
+            {
+                int aplicarEn = fOrdenamiento.GetColumnaSeleccionada();
+
+                dataManager.aplicarQuickSort(aplicarEn);
+                RepintaTextArea();
+
+            }
+        }
     }
 }

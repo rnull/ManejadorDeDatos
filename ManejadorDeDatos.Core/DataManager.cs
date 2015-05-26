@@ -97,8 +97,6 @@ namespace ManejadorDeDatos.Core
             return resultado;
         }
 
-
-
         public void ConstruirRegistros(string dbName)
         {
             string line;
@@ -180,7 +178,6 @@ namespace ManejadorDeDatos.Core
             }
 
         }
-
 
         //Se inicializa el metodo burbuja 
         public void aplicarBurbuja(int index)
@@ -278,7 +275,9 @@ namespace ManejadorDeDatos.Core
                 temporalNumChar[i] = Convert.ToInt32(temporaldechar[i]);
             }
 
-            Algoritmos.MetodosDeOrdenamiento.mSelec(temporalNumChar);
+
+            Algoritmos.MetodosDeOrdenamiento.PreSelec(temporalNumChar);
+
 
             for (int i = 0; i < temporalNumChar.Length; i++)
             {
@@ -325,10 +324,6 @@ namespace ManejadorDeDatos.Core
             {
                 _registros[i] = temp3[i];
             }
-
-
-
-
         }
         //FIn Metodo selec
 
@@ -407,5 +402,77 @@ namespace ManejadorDeDatos.Core
         }
         //Fin de heapsort
 
+        //Se inicializa el metodo QuickSort
+        public void aplicarQuickSort(int index) 
+        {
+            List<string> temp = new List<string>();
+            for (int i = 0; i < _registros.Count; i++)
+            {
+                temp.Add(_registros[i][index] + "*" + i);
+            }
+
+            char[] temporaldechar = new char[temp.Count];
+            for (int i = 0; i < temp.Count; i++)
+            {
+                string temporal = temp[i];
+                temporaldechar[i] = temporal[0];
+            }
+            int[] temporalNumChar = new int[temporaldechar.Length];
+            for (int i = 0; i < temporaldechar.Length; i++)
+            {
+                temporalNumChar[i] = Convert.ToInt32(temporaldechar[i]);
+            }
+
+
+            Algoritmos.MetodosDeOrdenamiento.PreQuickSort(temporalNumChar);
+
+
+            for (int i = 0; i < temporalNumChar.Length; i++)
+            {
+                temporaldechar[i] = Convert.ToChar(temporalNumChar[i]);
+            }
+
+            List<string> temp2 = new List<string>();
+            for (int i = 0; i < temporaldechar.Length; i++)
+            {
+
+                for (int j = 0; j < temp.Count; j++)
+                {
+                    string temporal = temp[j];
+                    if (temporaldechar[i].Equals(temporal[0]))
+                    {
+
+                        temp2.Add(temporal);
+                        break;
+                    }
+                }
+
+            }
+
+            for (int i = 0; i < temp2.Count; i++)
+            {
+                temp[i] = temp2[i];
+            }
+
+
+            List<string[]> temp3 = new List<string[]>();
+            for (int i = 0; i < _registros.Count; i++)
+            {
+                temp3.Add(_registros[i]);
+            }
+
+            for (int i = 0; i < temp.Count; i++)
+            {
+                string[] par = temp[i].Split('*');
+
+                temp3[i] = _registros.ElementAt(Int32.Parse(par[1]));
+            }
+
+            for (int i = 0; i < _registros.Count; i++)
+            {
+                _registros[i] = temp3[i];
+            }
+        }
+        //Fin de QuickSort
     }
 }
