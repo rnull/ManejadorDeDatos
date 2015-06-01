@@ -92,9 +92,9 @@ namespace Algoritmos
 
         //Metodo de HeapSort
         //se fija un limite de nodos 
-        public static  void HeapSort(ref int[] array)
-        {    
-            
+        public static void HeapSort(ref int[] array)
+        {
+
             int[] nodos = new int[100];
             int numMayor = 0;
             nodos = array;
@@ -104,50 +104,51 @@ namespace Algoritmos
             //es para guardar el numero con el que se va estar trabajando
             int temp;
             //sirvio de prueba este for
-            //for (i = (numMayor / 2) - 1; i >= 0; i--)
-            //{
-            //    siftDown(i, numMayor);
-            //}
+            for (i = (numMayor / 2) - 1; i >= 0; i--)
+            {
+                siftDown(i, numMayor-1,nodos);
+            }
 
             //este for es donde van estar intercambiando los nodos de posicion
-            for ( i = numMayor-1; i >= 1; i--)
+            for (i = numMayor - 1; i >= 1; i--)
             {
                 temp = nodos[0];
                 nodos[0] = nodos[i];
                 nodos[i] = temp;
-                siftDown(0, i - 1);
+                siftDown(0, i - 1, nodos);
 
             }
 
         }
 
         //Compara el nodo raiz con sus hijos
-        public void siftDown(int raiz, int Hijos) 
+        public static void siftDown(int raiz, int Hijos, int[] nodoss)
         {
             bool done = false;
             int HijoMayor;
             int temp;
 
-            while ((raiz*2<=Hijos)&&(!done))
+
+            while ((raiz * 2 <= Hijos) && (!done))
             {
-                if (raiz*2==Hijos)
+                if (raiz * 2 == Hijos)
                 {
                     HijoMayor = raiz * 2;
                 }
-                else if (nodos[raiz*2]>nodos[raiz*2+1])
+                else if (nodoss[raiz * 2] > nodoss[raiz * 2 + 1])
                 {
-                     HijoMayor = raiz * 2;
+                    HijoMayor = raiz * 2;
                 }
                 else
                 {
-                    HijoMayor = raiz * 2+1;
+                    HijoMayor = raiz * 2 + 1;
                 }
 
-                if (nodos[raiz]<nodos[HijoMayor])
+                if (nodoss[raiz] < nodoss[HijoMayor])
                 {
-                    temp = nodos[raiz];
-                    nodos[raiz] = nodos[HijoMayor];
-                    nodos[HijoMayor] = temp;
+                    temp = nodoss[raiz];
+                    nodoss[raiz] = nodoss[HijoMayor];
+                    nodoss[HijoMayor] = temp;
                     raiz = HijoMayor;
                 }
                 else
@@ -176,7 +177,7 @@ namespace Algoritmos
             }
         }
 
-        private int AplicarQuick(double[] numeros, int primero, int ultimo)
+        private  static int AplicarQuick(double[] numeros, int primero, int ultimo)
         {
             int ultimo1 = ultimo;
             double pivote = primero;
