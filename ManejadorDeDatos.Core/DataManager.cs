@@ -210,18 +210,63 @@ namespace ManejadorDeDatos.Core
             List<string> temp2 = new List<string>();
             for (int i = 0; i < temporaldechar.Length; i++)
             {
-
+               bool salir=false;
                 for (int j = 0; j < temp.Count; j++)
                 {
-                    string temporal = temp[j];
-                    if (temporaldechar[i].Equals(temporal[0]))
-                    {
-
-                        temp2.Add(temporal);
-                        break;
+                    if(salir==true){
+                    break;
                     }
+                 
+                    string temporal = temp[j];
+                    if (temporal[0].Equals(temporaldechar[i]))
+                    {
+                        
+                        
+                        if (i == 0)
+                        {
+                            temp2.Add(temporal);
+                            break;
+                        }
+                        else {
+                            for (int r = 0; r < temp2.Count; r++)
+                            {
+                                if (i == 1)
+                                {
+                                    if (temporal.Equals(temp2[r]))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        temp2.Add(temporal);
+                                        salir = true;
+                                        break;           
+                                    }
+                                }
+                                else
+                                {
+                                    if (temporal.Equals(temp2[r]))
+                                    {
+                                        break;
+                                    }
+                                    else if (r == temp2.Count-1)
+                                    {
+                                        temp2.Add(temporal);
+                                        salir = true;
+                                        break;
+                                    }
+                                }
+                                
+                               
+                            }
+                           
+                        
+                        } 
+                        
+                    }
+                   
                 }
-
+               
             }
 
             for (int i = 0; i < temp2.Count; i++)
@@ -287,16 +332,63 @@ namespace ManejadorDeDatos.Core
             List<string> temp2 = new List<string>();
             for (int i = 0; i < temporaldechar.Length; i++)
             {
-
+                bool salir = false;
                 for (int j = 0; j < temp.Count; j++)
                 {
-                    string temporal = temp[j];
-                    if (temporaldechar[i].Equals(temporal[0]))
+                    if (salir == true)
                     {
-
-                        temp2.Add(temporal);
                         break;
                     }
+
+                    string temporal = temp[j];
+                    if (temporal[0].Equals(temporaldechar[i]))
+                    {
+
+
+                        if (i == 0)
+                        {
+                            temp2.Add(temporal);
+                            break;
+                        }
+                        else
+                        {
+                            for (int r = 0; r < temp2.Count; r++)
+                            {
+                                if (i == 1)
+                                {
+                                    if (temporal.Equals(temp2[r]))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        temp2.Add(temporal);
+                                        salir = true;
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (temporal.Equals(temp2[r]))
+                                    {
+                                        break;
+                                    }
+                                    else if (r == temp2.Count - 1)
+                                    {
+                                        temp2.Add(temporal);
+                                        salir = true;
+                                        break;
+                                    }
+                                }
+
+
+                            }
+
+
+                        }
+
+                    }
+
                 }
 
             }
@@ -327,7 +419,7 @@ namespace ManejadorDeDatos.Core
         }
         //FIn Metodo selec
 
-        //Se inicializa el motodo HeaoSort
+        //Se inicializa el motodo HeapSort
         public void aplicarheapsort(int index)
         {
             List<string> temp = new List<string>();
@@ -360,16 +452,63 @@ namespace ManejadorDeDatos.Core
             List<string> temp2 = new List<string>();
             for (int i = 0; i < temporaldechar.Length; i++)
             {
-
+                bool salir = false;
                 for (int j = 0; j < temp.Count; j++)
                 {
-                    string temporal = temp[j];
-                    if (temporaldechar[i].Equals(temporal[0]))
+                    if (salir == true)
                     {
-
-                        temp2.Add(temporal);
                         break;
                     }
+
+                    string temporal = temp[j];
+                    if (temporal[0].Equals(temporaldechar[i]))
+                    {
+
+
+                        if (i == 0)
+                        {
+                            temp2.Add(temporal);
+                            break;
+                        }
+                        else
+                        {
+                            for (int r = 0; r < temp2.Count; r++)
+                            {
+                                if (i == 1)
+                                {
+                                    if (temporal.Equals(temp2[r]))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        temp2.Add(temporal);
+                                        salir = true;
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (temporal.Equals(temp2[r]))
+                                    {
+                                        break;
+                                    }
+                                    else if (r == temp2.Count - 1)
+                                    {
+                                        temp2.Add(temporal);
+                                        salir = true;
+                                        break;
+                                    }
+                                }
+
+
+                            }
+
+
+                        }
+
+                    }
+
                 }
 
             }
@@ -435,16 +574,63 @@ namespace ManejadorDeDatos.Core
             List<string> temp2 = new List<string>();
             for (int i = 0; i < temporaldechar.Length; i++)
             {
-
+                bool salir = false;
                 for (int j = 0; j < temp.Count; j++)
                 {
-                    string temporal = temp[j];
-                    if (temporaldechar[i].Equals(temporal[0]))
+                    if (salir == true)
                     {
-
-                        temp2.Add(temporal);
                         break;
                     }
+
+                    string temporal = temp[j];
+                    if (temporal[0].Equals(temporaldechar[i]))
+                    {
+
+
+                        if (i == 0)
+                        {
+                            temp2.Add(temporal);
+                            break;
+                        }
+                        else
+                        {
+                            for (int r = 0; r < temp2.Count; r++)
+                            {
+                                if (i == 1)
+                                {
+                                    if (temporal.Equals(temp2[r]))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        temp2.Add(temporal);
+                                        salir = true;
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (temporal.Equals(temp2[r]))
+                                    {
+                                        break;
+                                    }
+                                    else if (r == temp2.Count - 1)
+                                    {
+                                        temp2.Add(temporal);
+                                        salir = true;
+                                        break;
+                                    }
+                                }
+
+
+                            }
+
+
+                        }
+
+                    }
+
                 }
 
             }
