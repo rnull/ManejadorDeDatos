@@ -193,5 +193,21 @@ namespace ManejadorDeDatos.GUI
 
             }
         }
+
+        private void linealToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormBusqueda fBusqueda= new FormBusqueda(dataManager.GetColumnas());
+            fBusqueda.ShowDialog();
+            DialogResult dr = fBusqueda.DialogResult;
+            if (dr == DialogResult.OK)
+            {
+                string datoBusqueda = fBusqueda.GetDatoABuscar();
+                int aplicarEn = fBusqueda.GetColumnaSeleccionada();
+
+                // dataManager.aplquiBuqeLine(dato, calumna);
+                //textAreaPrincipal.BackColor = Color.Red;
+                //RepintaTextArea();
+            }
+        }
     }
 }

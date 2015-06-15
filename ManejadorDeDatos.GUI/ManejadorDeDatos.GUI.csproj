@@ -50,6 +50,9 @@
     <Compile Include="FormAgregarRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormBusqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormDefineColumnas.cs">
       <SubType>Form</SubType>
     </Compile>

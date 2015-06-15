@@ -46,9 +46,11 @@
             this.burbujaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selecciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.heapSortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quickSortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBusquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.linealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textAreaPrincipal = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.quickSortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +61,8 @@
             this.archivoToolStripMenuItem,
             this.columnasToolStripMenuItem,
             this.registroToolStripMenuItem,
-            this.aOrdenamientoToolStripMenuItem});
+            this.aOrdenamientoToolStripMenuItem,
+            this.aBusquedaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(629, 24);
@@ -175,30 +178,52 @@
             // defaultToolStripMenuItem
             // 
             this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.defaultToolStripMenuItem.Text = "Default";
             this.defaultToolStripMenuItem.Click += new System.EventHandler(this.defaultToolStripMenuItem_Click);
             // 
             // burbujaToolStripMenuItem
             // 
             this.burbujaToolStripMenuItem.Name = "burbujaToolStripMenuItem";
-            this.burbujaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.burbujaToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.burbujaToolStripMenuItem.Text = "Burbuja";
             this.burbujaToolStripMenuItem.Click += new System.EventHandler(this.burbujaToolStripMenuItem_Click);
             // 
             // selecciónToolStripMenuItem
             // 
             this.selecciónToolStripMenuItem.Name = "selecciónToolStripMenuItem";
-            this.selecciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.selecciónToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.selecciónToolStripMenuItem.Text = "Selección";
             this.selecciónToolStripMenuItem.Click += new System.EventHandler(this.selecciónToolStripMenuItem_Click);
             // 
             // heapSortToolStripMenuItem
             // 
             this.heapSortToolStripMenuItem.Name = "heapSortToolStripMenuItem";
-            this.heapSortToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.heapSortToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.heapSortToolStripMenuItem.Text = "HeapSort";
             this.heapSortToolStripMenuItem.Click += new System.EventHandler(this.heapSortToolStripMenuItem_Click);
+            // 
+            // quickSortToolStripMenuItem
+            // 
+            this.quickSortToolStripMenuItem.Name = "quickSortToolStripMenuItem";
+            this.quickSortToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.quickSortToolStripMenuItem.Text = "QuickSort";
+            this.quickSortToolStripMenuItem.Click += new System.EventHandler(this.quickSortToolStripMenuItem_Click);
+            // 
+            // aBusquedaToolStripMenuItem
+            // 
+            this.aBusquedaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.linealToolStripMenuItem});
+            this.aBusquedaToolStripMenuItem.Name = "aBusquedaToolStripMenuItem";
+            this.aBusquedaToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.aBusquedaToolStripMenuItem.Text = "A. Busqueda";
+            // 
+            // linealToolStripMenuItem
+            // 
+            this.linealToolStripMenuItem.Name = "linealToolStripMenuItem";
+            this.linealToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.linealToolStripMenuItem.Text = "Lineal";
+            this.linealToolStripMenuItem.Click += new System.EventHandler(this.linealToolStripMenuItem_Click);
             // 
             // textAreaPrincipal
             // 
@@ -213,13 +238,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // quickSortToolStripMenuItem
-            // 
-            this.quickSortToolStripMenuItem.Name = "quickSortToolStripMenuItem";
-            this.quickSortToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.quickSortToolStripMenuItem.Text = "QuickSort";
-            this.quickSortToolStripMenuItem.Click += new System.EventHandler(this.quickSortToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -273,6 +291,8 @@
         private System.Windows.Forms.ToolStripMenuItem selecciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem heapSortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quickSortToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBusquedaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linealToolStripMenuItem;
     }
 }
 
