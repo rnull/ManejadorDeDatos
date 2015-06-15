@@ -182,16 +182,16 @@ namespace ManejadorDeDatos.Core
         //Se inicializa el metodo burbuja 
         public void aplicarBurbuja(int index)
         {
-            List<string> temp = new List<string>();
+            List<string> RegistrosIniciales = new List<string>();
             for (int i = 0; i < _registros.Count; i++)
             {
-                temp.Add(_registros[i][index] + "*" + i);
+                RegistrosIniciales.Add(_registros[i][index] + "*" + i);
             }
 
-            char[] temporaldechar = new char[temp.Count];
-            for (int i = 0; i < temp.Count; i++)
+            char[] temporaldechar = new char[RegistrosIniciales.Count];
+            for (int i = 0; i < RegistrosIniciales.Count; i++)
             {
-                string temporal = temp[i];
+                string temporal = RegistrosIniciales[i];
                 temporaldechar[i] = temporal[0];
             }
             int[] temporalNumChar = new int[temporaldechar.Length];
@@ -207,90 +207,31 @@ namespace ManejadorDeDatos.Core
                 temporaldechar[i] = Convert.ToChar(temporalNumChar[i]);
             }
 
-            List<string> temp2 = new List<string>();
-            for (int i = 0; i < temporaldechar.Length; i++)
-            {
-               bool salir=false;
-                for (int j = 0; j < temp.Count; j++)
-                {
-                    if(salir==true){
-                    break;
-                    }
-                 
-                    string temporal = temp[j];
-                    if (temporal[0].Equals(temporaldechar[i]))
-                    {
-                        
-                        
-                        if (i == 0)
-                        {
-                            temp2.Add(temporal);
-                            break;
-                        }
-                        else {
-                            for (int r = 0; r < temp2.Count; r++)
-                            {
-                                if (i == 1)
-                                {
-                                    if (temporal.Equals(temp2[r]))
-                                    {
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        temp2.Add(temporal);
-                                        salir = true;
-                                        break;           
-                                    }
-                                }
-                                else
-                                {
-                                    if (temporal.Equals(temp2[r]))
-                                    {
-                                        break;
-                                    }
-                                    else if (r == temp2.Count-1)
-                                    {
-                                        temp2.Add(temporal);
-                                        salir = true;
-                                        break;
-                                    }
-                                }
-                                
-                               
-                            }
-                           
-                        
-                        } 
-                        
-                    }
-                   
-                }
-               
-            }
+            List<string> RegistrosEnOrden = new List<string>();
+            ordenacionDeElementosEnLista(RegistrosEnOrden, RegistrosIniciales, temporaldechar);
 
-            for (int i = 0; i < temp2.Count; i++)
+            for (int i = 0; i < RegistrosEnOrden.Count; i++)
             {
-                temp[i] = temp2[i];
+                RegistrosIniciales[i] = RegistrosEnOrden[i];
             }
 
 
-            List<string[]> temp3 = new List<string[]>();
+            List<string[]> RegistrosFinales = new List<string[]>();
             for (int i = 0; i < _registros.Count; i++)
             {
-                temp3.Add(_registros[i]);
+                RegistrosFinales.Add(_registros[i]);
             }
 
-            for (int i = 0; i < temp.Count; i++)
+            for (int i = 0; i < RegistrosIniciales.Count; i++)
             {
-                string[] par = temp[i].Split('*');
+                string[] par = RegistrosIniciales[i].Split('*');
 
-                temp3[i] = _registros.ElementAt(Int32.Parse(par[1]));
+                RegistrosFinales[i] = _registros.ElementAt(Int32.Parse(par[1]));
             }
 
             for (int i = 0; i < _registros.Count; i++)
             {
-                _registros[i] = temp3[i];
+                _registros[i] = RegistrosFinales[i];
             }
 
 
@@ -302,16 +243,16 @@ namespace ManejadorDeDatos.Core
         //Se inicializa el metodo selec 
         public void aplicarSelec(int index)
         {
-            List<string> temp = new List<string>();
+            List<string> RegistrosIniciales = new List<string>();
             for (int i = 0; i < _registros.Count; i++)
             {
-                temp.Add(_registros[i][index] + "*" + i);
+                RegistrosIniciales.Add(_registros[i][index] + "*" + i);
             }
 
-            char[] temporaldechar = new char[temp.Count];
-            for (int i = 0; i < temp.Count; i++)
+            char[] temporaldechar = new char[RegistrosIniciales.Count];
+            for (int i = 0; i < RegistrosIniciales.Count; i++)
             {
-                string temporal = temp[i];
+                string temporal = RegistrosIniciales[i];
                 temporaldechar[i] = temporal[0];
             }
             int[] temporalNumChar = new int[temporaldechar.Length];
@@ -329,92 +270,31 @@ namespace ManejadorDeDatos.Core
                 temporaldechar[i] = Convert.ToChar(temporalNumChar[i]);
             }
 
-            List<string> temp2 = new List<string>();
-            for (int i = 0; i < temporaldechar.Length; i++)
+            List<string> RegistrosOrdenados = new List<string>();
+            ordenacionDeElementosEnLista(RegistrosOrdenados, RegistrosIniciales, temporaldechar);
+
+            for (int i = 0; i < RegistrosOrdenados.Count; i++)
             {
-                bool salir = false;
-                for (int j = 0; j < temp.Count; j++)
-                {
-                    if (salir == true)
-                    {
-                        break;
-                    }
-
-                    string temporal = temp[j];
-                    if (temporal[0].Equals(temporaldechar[i]))
-                    {
-
-
-                        if (i == 0)
-                        {
-                            temp2.Add(temporal);
-                            break;
-                        }
-                        else
-                        {
-                            for (int r = 0; r < temp2.Count; r++)
-                            {
-                                if (i == 1)
-                                {
-                                    if (temporal.Equals(temp2[r]))
-                                    {
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        temp2.Add(temporal);
-                                        salir = true;
-                                        break;
-                                    }
-                                }
-                                else
-                                {
-                                    if (temporal.Equals(temp2[r]))
-                                    {
-                                        break;
-                                    }
-                                    else if (r == temp2.Count - 1)
-                                    {
-                                        temp2.Add(temporal);
-                                        salir = true;
-                                        break;
-                                    }
-                                }
-
-
-                            }
-
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-            for (int i = 0; i < temp2.Count; i++)
-            {
-                temp[i] = temp2[i];
+                RegistrosIniciales[i] = RegistrosOrdenados[i];
             }
 
 
-            List<string[]> temp3 = new List<string[]>();
+            List<string[]> RegistrosFinales = new List<string[]>();
             for (int i = 0; i < _registros.Count; i++)
             {
-                temp3.Add(_registros[i]);
+                RegistrosFinales.Add(_registros[i]);
             }
 
-            for (int i = 0; i < temp.Count; i++)
+            for (int i = 0; i < RegistrosIniciales.Count; i++)
             {
-                string[] par = temp[i].Split('*');
+                string[] par = RegistrosIniciales[i].Split('*');
 
-                temp3[i] = _registros.ElementAt(Int32.Parse(par[1]));
+                RegistrosFinales[i] = _registros.ElementAt(Int32.Parse(par[1]));
             }
 
             for (int i = 0; i < _registros.Count; i++)
             {
-                _registros[i] = temp3[i];
+                _registros[i] = RegistrosFinales[i];
             }
         }
         //FIn Metodo selec
@@ -422,16 +302,16 @@ namespace ManejadorDeDatos.Core
         //Se inicializa el motodo HeapSort
         public void aplicarheapsort(int index)
         {
-            List<string> temp = new List<string>();
+            List<string> RegistrosIniciales = new List<string>();
             for (int i = 0; i < _registros.Count; i++)
             {
-                temp.Add(_registros[i][index] + "*" + i);
+                RegistrosIniciales.Add(_registros[i][index] + "*" + i);
             }
 
-            char[] temporaldechar = new char[temp.Count];
-            for (int i = 0; i < temp.Count; i++)
+            char[] temporaldechar = new char[RegistrosIniciales.Count];
+            for (int i = 0; i < RegistrosIniciales.Count; i++)
             {
-                string temporal = temp[i];
+                string temporal = RegistrosIniciales[i];
                 temporaldechar[i] = temporal[0];
             }
             int[] temporalNumChar = new int[temporaldechar.Length];
@@ -449,92 +329,31 @@ namespace ManejadorDeDatos.Core
                 temporaldechar[i] = Convert.ToChar(temporalNumChar[i]);
             }
 
-            List<string> temp2 = new List<string>();
-            for (int i = 0; i < temporaldechar.Length; i++)
+            List<string> RegistrosOrdenados = new List<string>();
+            ordenacionDeElementosEnLista(RegistrosOrdenados, RegistrosIniciales, temporaldechar);
+
+            for (int i = 0; i < RegistrosOrdenados.Count; i++)
             {
-                bool salir = false;
-                for (int j = 0; j < temp.Count; j++)
-                {
-                    if (salir == true)
-                    {
-                        break;
-                    }
-
-                    string temporal = temp[j];
-                    if (temporal[0].Equals(temporaldechar[i]))
-                    {
-
-
-                        if (i == 0)
-                        {
-                            temp2.Add(temporal);
-                            break;
-                        }
-                        else
-                        {
-                            for (int r = 0; r < temp2.Count; r++)
-                            {
-                                if (i == 1)
-                                {
-                                    if (temporal.Equals(temp2[r]))
-                                    {
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        temp2.Add(temporal);
-                                        salir = true;
-                                        break;
-                                    }
-                                }
-                                else
-                                {
-                                    if (temporal.Equals(temp2[r]))
-                                    {
-                                        break;
-                                    }
-                                    else if (r == temp2.Count - 1)
-                                    {
-                                        temp2.Add(temporal);
-                                        salir = true;
-                                        break;
-                                    }
-                                }
-
-
-                            }
-
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-            for (int i = 0; i < temp2.Count; i++)
-            {
-                temp[i] = temp2[i];
+                RegistrosIniciales[i] = RegistrosOrdenados[i];
             }
 
 
-            List<string[]> temp3 = new List<string[]>();
+            List<string[]> RegistrosFinales = new List<string[]>();
             for (int i = 0; i < _registros.Count; i++)
             {
-                temp3.Add(_registros[i]);
+                RegistrosFinales.Add(_registros[i]);
             }
 
-            for (int i = 0; i < temp.Count; i++)
+            for (int i = 0; i < RegistrosIniciales.Count; i++)
             {
-                string[] par = temp[i].Split('*');
+                string[] par = RegistrosIniciales[i].Split('*');
 
-                temp3[i] = _registros.ElementAt(Int32.Parse(par[1]));
+                RegistrosFinales[i] = _registros.ElementAt(Int32.Parse(par[1]));
             }
 
             for (int i = 0; i < _registros.Count; i++)
             {
-                _registros[i] = temp3[i];
+                _registros[i] = RegistrosFinales[i];
             }
 
 
@@ -544,16 +363,16 @@ namespace ManejadorDeDatos.Core
         //Se inicializa el metodo QuickSort
         public void aplicarQuickSort(int index) 
         {
-            List<string> temp = new List<string>();
+            List<string> RegistrosIniciales = new List<string>();
             for (int i = 0; i < _registros.Count; i++)
             {
-                temp.Add(_registros[i][index] + "*" + i);
+                RegistrosIniciales.Add(_registros[i][index] + "*" + i);
             }
 
-            char[] temporaldechar = new char[temp.Count];
-            for (int i = 0; i < temp.Count; i++)
+            char[] temporaldechar = new char[RegistrosIniciales.Count];
+            for (int i = 0; i < RegistrosIniciales.Count; i++)
             {
-                string temporal = temp[i];
+                string temporal = RegistrosIniciales[i];
                 temporaldechar[i] = temporal[0];
             }
             int[] temporalNumChar = new int[temporaldechar.Length];
@@ -571,53 +390,99 @@ namespace ManejadorDeDatos.Core
                 temporaldechar[i] = Convert.ToChar(temporalNumChar[i]);
             }
 
-            List<string> temp2 = new List<string>();
-            for (int i = 0; i < temporaldechar.Length; i++)
+            List<string> RegistrosOrdenados = new List<string>();
+            ordenacionDeElementosEnLista(RegistrosOrdenados, RegistrosIniciales, temporaldechar);
+
+            for (int i = 0; i < RegistrosOrdenados.Count; i++)
             {
+                RegistrosIniciales[i] = RegistrosOrdenados[i];
+            }
+
+
+            List<string[]> RegistrosFinales = new List<string[]>();
+            for (int i = 0; i < _registros.Count; i++)
+            {
+                RegistrosFinales.Add(_registros[i]);
+            }
+
+            for (int i = 0; i < RegistrosIniciales.Count; i++)
+            {
+                string[] par = RegistrosIniciales[i].Split('*');
+
+                RegistrosFinales[i] = _registros.ElementAt(Int32.Parse(par[1]));
+            }
+
+            for (int i = 0; i < _registros.Count; i++)
+            {
+                _registros[i] = RegistrosFinales[i];
+            }
+        }
+        //Fin de QuickSort
+
+        private List<string> ordenacionDeElementosEnLista(List<string> ListaVacia, List<string> listaLlena,char [] charOrdenados) {
+            //Primer for donde va recorrer todos los caracteres ordenados previamente
+            //va ir un por uno 
+            for (int i = 0; i < charOrdenados.Length; i++)
+            {
+                //Bool necesario para que salga del sig si es necesario
                 bool salir = false;
-                for (int j = 0; j < temp.Count; j++)
+                for (int j = 0; j < listaLlena.Count; j++)
                 {
+                    //Bool va primero para no repetir procesos y para que avance al sig char
                     if (salir == true)
                     {
+                        //Rompe este for 
                         break;
                     }
 
-                    string temporal = temp[j];
-                    if (temporal[0].Equals(temporaldechar[i]))
+                    //temporal donde se va comporar el primer elemento de este (caracter)
+                    //con el de char ordenados
+                    //se va ir uno por uno 
+                    string temporal = listaLlena[j];
+                    //Si es igual el primer elemento con el de char ordenado entra
+                    if (temporal[0].Equals(charOrdenados[i]))
                     {
 
-
+                        //Como no hay nada que comparar entra primero
                         if (i == 0)
                         {
-                            temp2.Add(temporal);
+                            ListaVacia.Add(temporal);
                             break;
                         }
                         else
                         {
-                            for (int r = 0; r < temp2.Count; r++)
+                            //ahora como ya hay con que comparar entra en este for
+                            for (int r = 0; r < ListaVacia.Count; r++)
                             {
+                                //como solo se va repetir una ves debedo a que solo hay un 
+                                //elemento se puso esta condicion 
+                                //para evitar problemas con limite de rango
                                 if (i == 1)
                                 {
-                                    if (temporal.Equals(temp2[r]))
-                                    {
+                                    if (temporal.Equals(ListaVacia[r]))
+                                    {//si es igual se rompe este for y como solo se va repetir una 
+                                    //vez, regresa al segundo for para el sig elemento
                                         break;
                                     }
                                     else
-                                    {
-                                        temp2.Add(temporal);
-                                        salir = true;
+                                    {// si no es igual se agrega 
+                                        ListaVacia.Add(temporal);
+                                        salir = true;//se habilita para romper el segundo for
                                         break;
                                     }
                                 }
-                                else
+                                else// como ya tiene mas elementos a comparar se pasa a este
                                 {
-                                    if (temporal.Equals(temp2[r]))
+                                    //si el elemtento temporar es igual a todo la cadena 
+                                    //almacenada anteriormente se rompe el for y va con sig elemento
+                                    if (temporal.Equals(ListaVacia[r]))
                                     {
                                         break;
                                     }
-                                    else if (r == temp2.Count - 1)
+                                        //si ya es el ultimo ciclo y como no habia elementos repetidos se agrega
+                                    else if (r == ListaVacia.Count - 1)
                                     {
-                                        temp2.Add(temporal);
+                                       ListaVacia.Add(temporal);
                                         salir = true;
                                         break;
                                     }
@@ -634,31 +499,7 @@ namespace ManejadorDeDatos.Core
                 }
 
             }
-
-            for (int i = 0; i < temp2.Count; i++)
-            {
-                temp[i] = temp2[i];
-            }
-
-
-            List<string[]> temp3 = new List<string[]>();
-            for (int i = 0; i < _registros.Count; i++)
-            {
-                temp3.Add(_registros[i]);
-            }
-
-            for (int i = 0; i < temp.Count; i++)
-            {
-                string[] par = temp[i].Split('*');
-
-                temp3[i] = _registros.ElementAt(Int32.Parse(par[1]));
-            }
-
-            for (int i = 0; i < _registros.Count; i++)
-            {
-                _registros[i] = temp3[i];
-            }
+            return ListaVacia;
         }
-        //Fin de QuickSort
     }
 }
