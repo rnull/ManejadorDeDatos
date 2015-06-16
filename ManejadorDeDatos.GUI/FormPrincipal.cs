@@ -207,36 +207,72 @@ namespace ManejadorDeDatos.GUI
                string datoBusqueda = fBusqueda.GetDatoABuscar();
                int aplicarEn = fBusqueda.GetColumnaSeleccionada();
 
+
                int  index = dataManager.AplicarBusquedaLineal(aplicarEn, datoBusqueda);
                string numero = Convert.ToString(index);
+               string nuevo = dataManager.RegistrosToString();
+               int num = index + 1;
+               string[] elementos = nuevo.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                string elementoEncontrado = elementos[index];
                if (index < 0)
                {
                    MessageBox.Show("El elemento buscado no existe, asegurese de que lo escribio igual o intentelo en otra columna");
                }
                else
                {
-                   string nuevo = dataManager.RegistrosToString();
-                   int num = index + 1;
-                   string[] elementoEncontrado = nuevo.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
-                   MessageBox.Show("Se econtro el elemento: " + datoBusqueda + "\r\nEn la posicion: " + num + "\r\nDatos completos: " + elementoEncontrado[index]);
                   
+                   MessageBox.Show("Se econtro el elemento: " + datoBusqueda + "\r\nEn la posicion: " + num + "\r\nDatos completos: " + elementos[index]);
+                   
                }
                 //RepintaTextArea();
                 textAreaPrincipal.Text = "";
-                for (int i = 0; i < 10; i++)
+                textAreaPrincipal.AppendText(dataManager.ColumnasToString() + "\r\n");
+                string [] elementoSeparado=elementoEncontrado.Split(' ');
+                for (int i = 0; i < elementos.Length; i++)
                 {
-                    for (int j = 0; j <  10; j++)
-                    {
+                    if (index==i)
+                                {for (int j = 0; j < elementoSeparado.Length; j++)
+			                                {
+                                                if (aplicarEn==j)
+                                                {
+                                                   textAreaPrincipal.SelectionColor = Color.Red;
+                                                   textAreaPrincipal.AppendText(elementoSeparado[j] + " ");
+ 
 
-                        textAreaPrincipal.SelectionColor = Color.Black;
-                        if (i == 5 && j == 5)
-                        {
-                            textAreaPrincipal.SelectionColor = Color.Red;
-                        }
-                        textAreaPrincipal.AppendText("casilla (" + i + "," + j + ")");
+                                                }
+                                                else
+                                                {
+                                                    textAreaPrincipal.SelectionColor = Color.Black;
+                                                    textAreaPrincipal.AppendText(elementoSeparado[j]+" ");
+                
+
+                                                } 
+                                                 if(j==elementoSeparado.Length-1){
+
+                                                     textAreaPrincipal.AppendText("\r\n");
+                
+    
+                                                                }
+			                                }
+
+                                }
+                    else if (i==elementos.Length-1)
+                    {
+                        textAreaPrincipal.AppendText(elementos[i]);
                     }
+                    else
+                    {
+                        textAreaPrincipal.SelectionColor = Color.Black;
+                        textAreaPrincipal.AppendText(elementos[i] + "\r\n");
+                    } 
+
+
+                    }
+                    
                 }
+
+
+
             }
         }
     }
-}
