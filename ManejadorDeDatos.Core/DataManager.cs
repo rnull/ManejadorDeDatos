@@ -502,15 +502,18 @@ namespace ManejadorDeDatos.Core
             return ListaVacia;
         }
 
-      public int AplicarBusquuedaLineal(int index, string datoABuscar) {
-            int indiceDeDatoBuscado=0;
+      public int AplicarBusquedaLineal(int index, string datoABuscar) {
+            int indiceDeDatoBuscado;
             List<string> RegistrosIniciales = new List<string>();
             for (int i = 0; i < _registros.Count; i++)
             {
-                RegistrosIniciales.Add(_registros[i][index] + "*" + i);
+                RegistrosIniciales.Add(_registros[i][index]);
             }
 
             indiceDeDatoBuscado = Algoritmos.MetodosDeBusqueda.busquedaLineal(datoABuscar, RegistrosIniciales);
+
+            //string dato = Convert.ToString(_registros[indiceDeDatoBuscado]);
+
             return indiceDeDatoBuscado;
         
             

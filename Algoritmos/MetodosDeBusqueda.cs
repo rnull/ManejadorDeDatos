@@ -20,7 +20,7 @@ namespace Algoritmos
                     return indice;
                 }
             }
-            return 0; //No se encontro coincidencia
+            return -1; //No se encontro coincidencia
         }
         //Fin BusquedaLineal
     }

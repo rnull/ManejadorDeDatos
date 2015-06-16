@@ -112,6 +112,9 @@ namespace ManejadorDeDatos.GUI
             textAreaPrincipal.AppendText(dataManager.ColumnasToString() + "\r\n" + dataManager.RegistrosToString());
         }
 
+        
+
+
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fileManager.GuardarCambios(textAreaPrincipal.Text);
@@ -201,11 +204,23 @@ namespace ManejadorDeDatos.GUI
             DialogResult dr = fBusqueda.DialogResult;
             if (dr == DialogResult.OK)
             {
-                string datoBusqueda = fBusqueda.GetDatoABuscar();
-                int aplicarEn = fBusqueda.GetColumnaSeleccionada();
+               string datoBusqueda = fBusqueda.GetDatoABuscar();
+               int aplicarEn = fBusqueda.GetColumnaSeleccionada();
 
-                    dataManager.
-                //textAreaPrincipal.BackColor = Color.Red;
+               int  index = dataManager.AplicarBusquedaLineal(aplicarEn, datoBusqueda);
+               string numero = Convert.ToString(index);
+               if (index < 0)
+               {
+                   MessageBox.Show("El elemento buscado no existe, asegurese de que lo escribio igual o intentelo en otra columna");
+               }
+               else
+               {
+                   string nuevo = dataManager.RegistrosToString();
+                   int num = index + 1;
+                   string[] elementoEncontrado = nuevo.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                   MessageBox.Show("Se econtro el elemento: " + datoBusqueda + "\r\nEn la posicion: " + num + "\r\nDatos completos: " + elementoEncontrado[index]);
+                  
+               }
                 //RepintaTextArea();
             }
         }
