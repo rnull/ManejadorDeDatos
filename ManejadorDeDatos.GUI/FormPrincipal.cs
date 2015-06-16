@@ -207,6 +207,20 @@ namespace ManejadorDeDatos.GUI
                 // dataManager.aplquiBuqeLine(dato, calumna);
                 //textAreaPrincipal.BackColor = Color.Red;
                 //RepintaTextArea();
+                textAreaPrincipal.Text = "";
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j <  10; j++)
+                    {
+
+                        textAreaPrincipal.SelectionColor = Color.Black;
+                        if (i == 5 && j == 5)
+                        {
+                            textAreaPrincipal.SelectionColor = Color.Red;
+                        }
+                        textAreaPrincipal.AppendText("casilla (" + i + "," + j + ")");
+                    }
+                }
             }
         }
     }
