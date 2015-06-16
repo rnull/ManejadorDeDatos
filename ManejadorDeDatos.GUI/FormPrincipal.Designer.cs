@@ -49,8 +49,8 @@
             this.quickSortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBusquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textAreaPrincipal = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.textAreaPrincipal = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -225,25 +225,24 @@
             this.linealToolStripMenuItem.Text = "Lineal";
             this.linealToolStripMenuItem.Click += new System.EventHandler(this.linealToolStripMenuItem_Click);
             // 
-            // textAreaPrincipal
-            // 
-            this.textAreaPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textAreaPrincipal.Location = new System.Drawing.Point(0, 24);
-            this.textAreaPrincipal.Multiline = true;
-            this.textAreaPrincipal.Name = "textAreaPrincipal";
-            this.textAreaPrincipal.ReadOnly = true;
-            this.textAreaPrincipal.Size = new System.Drawing.Size(629, 327);
-            this.textAreaPrincipal.TabIndex = 1;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // textAreaPrincipal
+            // 
+            this.textAreaPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textAreaPrincipal.Location = new System.Drawing.Point(0, 24);
+            this.textAreaPrincipal.Name = "textAreaPrincipal";
+            this.textAreaPrincipal.Size = new System.Drawing.Size(629, 385);
+            this.textAreaPrincipal.TabIndex = 2;
+            this.textAreaPrincipal.Text = "";
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 400);
+            this.ClientSize = new System.Drawing.Size(629, 409);
             this.Controls.Add(this.textAreaPrincipal);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -277,7 +276,6 @@
         private System.Windows.Forms.ToolStripMenuItem definirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
-        private System.Windows.Forms.TextBox textAreaPrincipal;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem edicarColumnaToolStripMenuItem;
@@ -293,6 +291,7 @@
         private System.Windows.Forms.ToolStripMenuItem quickSortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBusquedaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem linealToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox textAreaPrincipal;
     }
 }
 
