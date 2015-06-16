@@ -204,7 +204,7 @@ namespace ManejadorDeDatos.GUI
                 string datoBusqueda = fBusqueda.GetDatoABuscar();
                 int aplicarEn = fBusqueda.GetColumnaSeleccionada();
 
-                // dataManager.aplquiBuqeLine(dato, calumna);
+                    dataManager.
                 //textAreaPrincipal.BackColor = Color.Red;
                 //RepintaTextArea();
                 textAreaPrincipal.Text = "";
