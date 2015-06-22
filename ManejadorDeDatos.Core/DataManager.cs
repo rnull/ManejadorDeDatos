@@ -10,7 +10,8 @@ namespace ManejadorDeDatos.Core
     public class DataManager
     {
         private string[] _columnas;
-        private List<string[]> _registros;
+        public List<string[]> _registros;
+        public string _dato;
         private int MayorTamaño;
 
         public DataManager(string Cadena_de_Columnas)
@@ -233,10 +234,6 @@ namespace ManejadorDeDatos.Core
             {
                 _registros[i] = RegistrosFinales[i];
             }
-
-
-
-
         }
         //FIn Metodo burbuja
 
@@ -418,7 +415,6 @@ namespace ManejadorDeDatos.Core
             }
         }
         //Fin de QuickSort
-
         private List<string> ordenacionDeElementosEnLista(List<string> ListaVacia, List<string> listaLlena,char [] charOrdenados) {
             //Primer for donde va recorrer todos los caracteres ordenados previamente
             //va ir un por uno 
@@ -515,9 +511,26 @@ namespace ManejadorDeDatos.Core
             //string dato = Convert.ToString(_registros[indiceDeDatoBuscado]);
 
             return indiceDeDatoBuscado;
-        
-            
-
         }
+      public int AplicarBusquedaBinaria(int index, string buscado) 
+      {
+          List<string> listaBusqueda = new List<string>();
+          for (int i = 0; i < _registros.Count; i++)
+          {
+              listaBusqueda.Add(_registros[i][index]);
+          }
+
+          listaBusqueda.Sort();
+
+          int comparacion = listaBusqueda.BinarySearch(buscado);
+          
+          if(comparacion > 0)
+          {
+               //El dato fue encontrado  y regresa la posicion del datobuscado
+              return comparacion;
+          }
+          //else No existe el dato buscado 
+          return 0;
+      }
     }
 }

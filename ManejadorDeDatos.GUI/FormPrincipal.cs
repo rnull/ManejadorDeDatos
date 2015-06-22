@@ -112,9 +112,6 @@ namespace ManejadorDeDatos.GUI
             textAreaPrincipal.AppendText(dataManager.ColumnasToString() + "\r\n" + dataManager.RegistrosToString());
         }
 
-        
-
-
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fileManager.GuardarCambios(textAreaPrincipal.Text);
@@ -279,17 +276,30 @@ namespace ManejadorDeDatos.GUI
             }
 
         private void binariaToolStripMenuItem_Click(object sender, EventArgs e)
-            {FormBusqueda fBusqueda= new FormBusqueda(dataManager.GetColumnas());
-                fBusqueda.ShowDialog();
-                DialogResult dr = fBusqueda.DialogResult;
-                if (dr == DialogResult.OK)
-                {
-                    int aplicarEn = fBusqueda.GetColumnaSeleccionada();
+            {
+            FormBusqueda fBusqueda = new FormBusqueda(dataManager.GetColumnas());
+            fBusqueda.ShowDialog();
+            DialogResult dr = fBusqueda.DialogResult;
+             if (dr == DialogResult.OK)
+             {
 
-                    dataManager.AplicarSortDefault(aplicarEn);//Primero se ordena 
-                    RepintaTextArea();//Solo prueba
-                }
+                 string datoBusqueda = fBusqueda.GetDatoABuscar();
+                 int aplicarEn = fBusqueda.GetColumnaSeleccionada();
+                 
 
+                 int index = dataManager.AplicarBusquedaBinaria(aplicarEn, datoBusqueda);
+                 //Ya se tiene el index del dato buscado
+                 string numero = Convert.ToString(index);
+                 string nuevo = dataManager.RegistrosToString();
+                 int num = index + 1;
+                 string[] elementos = nuevo.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                 
+                 if (index > 0) 
+                 {
+                     MessageBox.Show("Se econtro el elemento: " + datoBusqueda + "\r\nEn la posicion: " + num + "\r\nDatos completos: " + elementos[index]);
+                 }
+                 else MessageBox.Show("El dato ingresado no se ha encontrado");
+             }
             }
            }
         }
