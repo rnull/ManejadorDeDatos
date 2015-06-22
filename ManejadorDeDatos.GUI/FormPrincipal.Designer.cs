@@ -51,6 +51,7 @@
             this.linealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.textAreaPrincipal = new System.Windows.Forms.RichTextBox();
+            this.binariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -213,7 +214,8 @@
             // aBusquedaToolStripMenuItem
             // 
             this.aBusquedaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.linealToolStripMenuItem});
+            this.linealToolStripMenuItem,
+            this.binariaToolStripMenuItem});
             this.aBusquedaToolStripMenuItem.Name = "aBusquedaToolStripMenuItem";
             this.aBusquedaToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.aBusquedaToolStripMenuItem.Text = "A. Busqueda";
@@ -221,7 +223,7 @@
             // linealToolStripMenuItem
             // 
             this.linealToolStripMenuItem.Name = "linealToolStripMenuItem";
-            this.linealToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.linealToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.linealToolStripMenuItem.Text = "Lineal";
             this.linealToolStripMenuItem.Click += new System.EventHandler(this.linealToolStripMenuItem_Click);
             // 
@@ -237,6 +239,13 @@
             this.textAreaPrincipal.Size = new System.Drawing.Size(629, 385);
             this.textAreaPrincipal.TabIndex = 2;
             this.textAreaPrincipal.Text = "";
+            // 
+            // binariaToolStripMenuItem
+            // 
+            this.binariaToolStripMenuItem.Name = "binariaToolStripMenuItem";
+            this.binariaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.binariaToolStripMenuItem.Text = "Binaria";
+            this.binariaToolStripMenuItem.Click += new System.EventHandler(this.binariaToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -292,6 +301,7 @@
         private System.Windows.Forms.ToolStripMenuItem aBusquedaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem linealToolStripMenuItem;
         private System.Windows.Forms.RichTextBox textAreaPrincipal;
+        private System.Windows.Forms.ToolStripMenuItem binariaToolStripMenuItem;
     }
 }
 

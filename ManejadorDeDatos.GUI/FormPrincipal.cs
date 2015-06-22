@@ -274,5 +274,19 @@ namespace ManejadorDeDatos.GUI
 
 
             }
+
+        private void binariaToolStripMenuItem_Click(object sender, EventArgs e)
+            {FormBusqueda fBusqueda= new FormBusqueda(dataManager.GetColumnas());
+                fBusqueda.ShowDialog();
+                DialogResult dr = fBusqueda.DialogResult;
+                if (dr == DialogResult.OK)
+                {
+                    int aplicarEn = fBusqueda.GetColumnaSeleccionada();
+
+                    dataManager.AplicarSortDefault(aplicarEn);//Primero se ordena 
+                    RepintaTextArea();//Solo prueba
+                }
+
+            }
+           }
         }
-    }
