@@ -213,8 +213,7 @@ namespace ManejadorDeDatos.GUI
                string nuevo = dataManager.RegistrosToString();
                int num = index + 1;
                string[] elementos = nuevo.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
-                string elementoEncontrado = elementos[index];
-               if (index < 0)
+                 if (index < 0)
                {
                    MessageBox.Show("El elemento buscado no existe, asegurese de que lo escribio igual o intentelo en otra columna");
                }
@@ -222,54 +221,58 @@ namespace ManejadorDeDatos.GUI
                {
                   
                    MessageBox.Show("Se econtro el elemento: " + datoBusqueda + "\r\nEn la posicion: " + num + "\r\nDatos completos: " + elementos[index]);
-                   
+                   string elementoEncontrado = elementos[index];
+              
+                   textAreaPrincipal.Text = "";
+                   textAreaPrincipal.AppendText(dataManager.ColumnasToString() + "\r\n");
+                   string[] elementoSeparado = elementoEncontrado.Split(' ');
+                   for (int i = 0; i < elementos.Length; i++)
+                   {
+                       if (index == i)
+                       {
+                           for (int j = 0; j < elementoSeparado.Length; j++)
+                           {
+                               if (aplicarEn == j)
+                               {
+                                   textAreaPrincipal.SelectionColor = Color.Red;
+                                   textAreaPrincipal.AppendText(elementoSeparado[j] + " ");
+
+
+                               }
+                               else
+                               {
+                                   textAreaPrincipal.SelectionColor = Color.Black;
+                                   textAreaPrincipal.AppendText(elementoSeparado[j] + " ");
+
+
+                               }
+                               if (j == elementoSeparado.Length - 1)
+                               {
+
+                                   textAreaPrincipal.AppendText("\r\n");
+
+
+                               }
+                           }
+
+                       }
+                       else if (i == elementos.Length - 1)
+                       {
+                           textAreaPrincipal.AppendText(elementos[i]);
+                       }
+                       else
+                       {
+                           textAreaPrincipal.SelectionColor = Color.Black;
+                           textAreaPrincipal.AppendText(elementos[i] + "\r\n");
+                       }
+
+
+                   }
+
+               }
                }
                 //RepintaTextArea();
-                textAreaPrincipal.Text = "";
-                textAreaPrincipal.AppendText(dataManager.ColumnasToString() + "\r\n");
-                string [] elementoSeparado=elementoEncontrado.Split(' ');
-                for (int i = 0; i < elementos.Length; i++)
-                {
-                    if (index==i)
-                                {for (int j = 0; j < elementoSeparado.Length; j++)
-			                                {
-                                                if (aplicarEn==j)
-                                                {
-                                                   textAreaPrincipal.SelectionColor = Color.Red;
-                                                   textAreaPrincipal.AppendText(elementoSeparado[j] + " ");
- 
-
-                                                }
-                                                else
-                                                {
-                                                    textAreaPrincipal.SelectionColor = Color.Black;
-                                                    textAreaPrincipal.AppendText(elementoSeparado[j]+" ");
-                
-
-                                                } 
-                                                 if(j==elementoSeparado.Length-1){
-
-                                                     textAreaPrincipal.AppendText("\r\n");
-                
-    
-                                                                }
-			                                }
-
-                                }
-                    else if (i==elementos.Length-1)
-                    {
-                        textAreaPrincipal.AppendText(elementos[i]);
-                    }
-                    else
-                    {
-                        textAreaPrincipal.SelectionColor = Color.Black;
-                        textAreaPrincipal.AppendText(elementos[i] + "\r\n");
-                    } 
-
-
-                    }
-                    
-                }
+              
 
 
 
