@@ -68,24 +68,23 @@ namespace Algoritmos
             }
         }
 
-        private static void AplicarSelec(int[] numeros)
+        private static void AplicarSelec(int[] numerosArray)
         {
-            for (int i = 0; i < numeros.Length - 1; i++)
+            int temp;
+            int i, j, posMin;
+            int n = numerosArray.Length;
+
+            for (i = 0; i < n - 1; i++)
             {
-                int minimo = i;
-
-                for (int j = i + 1; i < numeros.Length; i++)
+                posMin = i;
+                for (j = i + 1; j < n; j++)
                 {
-                    if (numeros[j] < numeros[minimo])
-                    {
-                        minimo = j;
-                    }
-                    int aux = numeros[i];
-                    numeros[i] = numeros[minimo];
-                    numeros[minimo] = aux;
-
+                    if (numerosArray[j] < numerosArray[posMin])
+                        posMin = j;
                 }
-
+                temp = numerosArray[i];
+                numerosArray[i] = numerosArray[posMin];
+                numerosArray[posMin] = temp;
             }
         }
         //Fin Metodo Selección
