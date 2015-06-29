@@ -302,6 +302,7 @@ namespace ManejadorDeDatos.GUI
                      textAreaPrincipal.Text = "";
                      textAreaPrincipal.AppendText(dataManager.ColumnasToString() + "\r\n");
                      string[] elementoSeparado = elementoEncontrado.Split(' ');
+                     
                      for (int i = 0; i < elementos.Length; i++)
                      {
                          if (index == i)

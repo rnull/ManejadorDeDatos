@@ -44,7 +44,7 @@ namespace ManejadorDeDatos.Core
             }
             return false;
         }
-
+        
         public string ColumnasToString()
         {
             string resultado = "";
@@ -413,6 +413,7 @@ namespace ManejadorDeDatos.Core
             {
                 _registros[i] = RegistrosFinales[i];
             }
+
         }
         //Fin de QuickSort
         private List<string> ordenacionDeElementosEnLista(List<string> ListaVacia, List<string> listaLlena,char [] charOrdenados) {
