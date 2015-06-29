@@ -176,10 +176,10 @@ namespace Algoritmos
             }
         }
 
-        private  static int AplicarQuick(double[] numeros, int primero, int ultimo)
+        private static int AplicarQuick(double[] numeros,int primero, int ultimo)
         {
             int ultimo1 = ultimo;
-            double pivote = primero;
+            double pivote = (primero + ultimo) / 2; 
             double temporal;
 
             int izq = primero + 1;
@@ -199,13 +199,14 @@ namespace Algoritmos
                 }
             }
             while (izq <= der);
-
+            
             temporal = numeros[0];
             numeros[0] = ultimo1;
-            numeros[numeros.Length - 1] = temporal;
+            numeros[numeros.Length-1] = temporal;
 
             return der;
+            }
         }
         //Fin QuickSort
     }
-}
+
