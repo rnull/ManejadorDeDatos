@@ -46,7 +46,7 @@ namespace Algoritmos
                 }
             }
 
-        }    
+        }
         // Fin metodo burbuja
 
         //Metodo Selección
@@ -105,7 +105,7 @@ namespace Algoritmos
             //sirvio de prueba este for
             for (i = (numMayor / 2) - 1; i >= 0; i--)
             {
-                siftDown(i, numMayor-1,nodos);
+                siftDown(i, numMayor - 1, nodos);
             }
 
             //este for es donde van estar intercambiando los nodos de posicion
@@ -160,53 +160,58 @@ namespace Algoritmos
         //Fin HeapSort
 
         //Inicio Metodo QuickSort
-        public static void PreQuickSort(int[] caracteres) 
+        public static void PreQuickSort(int[] caracteres)
         {
-            double[] equivalenciASCII = new double[caracteres.Length];
+            int[] equivalenciASCII = new int[caracteres.Length];
             int x = caracteres[0];
             for (int i = 0; i < caracteres.Length; i++)
             {
-                equivalenciASCII[i] = (double)caracteres[i];
+                equivalenciASCII[i] = (int)caracteres[i];
             }
 
-            AplicarQuick(equivalenciASCII, caracteres[0], caracteres[caracteres.Length - 1]);
+            quicksort(equivalenciASCII, caracteres[0], caracteres[caracteres.Length - 1]);
             for (int i = 0; i < caracteres.Length; i++)
             {
                 caracteres[i] = (char)equivalenciASCII[i];
             }
         }
 
-        private static int AplicarQuick(double[] numeros,int primero, int ultimo)
+        public static void quicksort(int[] input, int low, int high)
         {
-            int ultimo1 = ultimo;
-            double pivote = (primero + ultimo) / 2; 
-            double temporal;
+            int pivot_loc = 0;
 
-            int izq = primero + 1;
-            int der = ultimo1;
+            if (low < high)
+                pivot_loc = partition(input, low, high);
+            quicksort(input, low, pivot_loc - 1);
+            quicksort(input, pivot_loc + 1, high);
+        }
 
-            do
+        private static int partition(int[] input, int low, int high)
+        {
+            int pivot = input[high];
+            int i = low - 1;
+
+            for (int j = low; j < high - 1; j++)
             {
-                while ((izq <= der) && (izq <= pivote))
-                    izq++;
-                while ((izq <= der) && (der > pivote))
-                    der--;
-                if (izq < der)
+                if (input[j] <= pivot)
                 {
-                    temporal = numeros[izq];
-                    numeros[izq] = numeros[der];
-                    numeros[der] = temporal;
+                    i++;
+                    swap(input, i, j);
                 }
             }
-            while (izq <= der);
-            
-            temporal = numeros[0];
-            numeros[0] = ultimo1;
-            numeros[numeros.Length-1] = temporal;
+            swap(input, i + 1, high);
+            return i + 1;
+        }
 
-            return der;
-            }
+
+
+        private static void swap(int[] ar, int a, int b)
+        {
+            int temp = ar[a];
+            ar[a] = ar[b];
+            ar[b] = temp;
         }
         //Fin QuickSort
     }
+}
 

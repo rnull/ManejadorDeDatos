@@ -155,8 +155,8 @@ namespace ManejadorDeDatos.Core
             {
                 temp.Add(_registros[i][index] +"*"+i);
             }
+
             temp.Sort();
-            
             //Respaldamos los registros por valor
             List<string[]> _regRespaldo = new List<string[]>();
             for (int i = 0; i < _registros.Count; i++)
@@ -379,8 +379,7 @@ namespace ManejadorDeDatos.Core
             }
 
 
-            Algoritmos.MetodosDeOrdenamiento.PreQuickSort(temporalNumChar);
-
+            Algoritmos.MetodosDeOrdenamiento.HeapSort(ref temporalNumChar);
 
             for (int i = 0; i < temporalNumChar.Length; i++)
             {
